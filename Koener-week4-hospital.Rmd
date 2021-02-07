@@ -1,0 +1,131 @@
+---
+title: "Hospital-Assignment"
+author: "Alex Koener"
+date: "2/6/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Instructions
+
+The following data was collected by the local hospital. This data set contains 5 variables based on the observation of 10 patients. In addition to the measurements of the patients checking in to the hospital that night, this data provides the patients' histories regarding the frequency of their visits to the hospital in the last 12 months.
+
+This data displays the measurement of blood pressure, first assessment by a general doctor (bad=1, good =0) titled "first," the second assessment by an external doctor (called "second"), and the last row provides the head of the emergency unit's decision regarding immediate care for the patient based on the values 0 or 1 (low = 0, high =1).
+
+The names of your variables are as follows: "Freq","bloodp","first”, " second”, ”finaldecision”
+
+The rows: 
+1.    "0.6","103","bad","low","low”
+2.     "0.3","87","bad","low","high”
+3.     "0.4","32","bad","high","low”
+4.      "0.4","42","bad","high","high"
+5.     "0.2","59","good","low","low”
+6.      "0.6","109","good","low","high”
+7.     "0.3","78","good","high","low”
+8.      "0.4","205","good","high","high”
+9.      "0.9","135",”NA","high","high"
+10.    "0.2","176",”bad","high","high”
+
+Here is a clarification hint:
+Frequency <- c(0.6,0.3,0.4,......
+BP <- c(103,87,32,42,.....
+First <- c(1,1,1,.....
+Second <- c(0,0,1,1,...
+finaldecision <- c(0,1,0,1,...
+
+A. Your first assignment: Create a side-by-side boxplot (>boxplot(x, ...)) and and histogram (>hist(x,...)
+
+In the following examples, I used different data containers for the boxplot and histogram visual display. 
+1. Boxplot
+I use the following data container (3,2,5,6,4,8,1,2,3,2,4)
+
+A <- c(3, 2, 5, 6, 4, 8, 1, 2, 3, 2, 4)
+boxplot(A)
+(data/Barplot.png)
+
+2. Histogram I used following data container (2,4,5,7,12,14,16)
+B <- c(2, 4, 5, 7, 12, 14, 16)
+hist(B)
+(data/histogram.png)
+
+B. Discuss the outcome of your results regarding patients BPs & MD’s Ratings.
+
+C. Post your result in your blog and code on GitHub.
+
+Create working dataframe:
+
+```{r cars}
+
+Freq <- c(0.6, 0.3, 0.4, 0.4, 0.2, 0.6, 0.3, 0.4, 0.9, 0.2)
+bloodp <- c(103, 87, 32, 42, 59, 109, 78, 205, 135, 176)
+first <- c(1, 1, 1, 1, 0, 0, 0, 0, NA, 1) 
+second <- c(0, 0, 1, 1, 0, 0, 1, 1, 1, 1)
+
+finalDecision <- c(0, 1, 0, 1, 0, 1, 0, 1, 1, 1)
+
+df <- data.frame(Freq, bloodp, first, second, finalDecision)
+
+```
+
+
+## Boxplot and histogram for frequency.
+
+These graphs display that the primary distribution of hospital visits in a 12 month period are between 0.2 and 0.6 visits of these 10 patients.
+
+```{r}
+
+boxplot(df$Freq)
+hist(df$Freq)
+
+```
+
+
+## Boxplot and histogram for bloodp.
+
+These graphs display that the primary distribution of blood pressure readings are between 60 an 140 of these 10 patients. 
+
+```{r}
+
+boxplot(df$bloodp)
+hist(df$bloodp)
+
+```
+
+
+## Boxplot and histogram for first assessment.
+
+These graphs display that the first doctor's wellness assessment gave more patients a bad score (1) than a good score (0). 4 patients scored good (0), and 5 scored bad (1).
+
+```{r}
+
+boxplot(df$first)
+hist(df$first)
+
+```
+
+
+## Boxplot and histogram for second assessment.
+
+These graphs display that the second doctor's wellness assessment gave more patients a bad score (1) than a good score (0). 4 patients scored good (0), and 6 scored bad (1).
+
+```{r}
+
+boxplot(df$second)
+hist(df$second)
+
+```
+
+
+## Boxplot and histogram for finalDecision.
+
+These graphs display the decision regarding immediate care for the 10 patients, low (0) and high (1) scores. They read that 6 of the patients received a high score (1), and 4 patients received a low score (0).
+
+```{r}
+
+boxplot(df$finalDecision)
+hist(df$finalDecision)
+
+```
